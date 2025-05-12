@@ -1,0 +1,23 @@
+#!/bin/zsh -l
+# ********************************************************************************************************************************
+# 
+# Author: David A. Minton
+# ********************************************************************************************************************************
+
+#SBATCH -A daminton
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=14-00:00:00
+#SBATCH --cpus-per-task=16
+#SBATCH --job-name=Chambers2013
+#SBATCH -o %x.out
+#SBATCH -e %x.err
+#SBATCH --mail-user=daminton@purdue.edu
+#SBATCH --mail-type=ALL
+
+#Output some info to record where this was run and when
+pwd; hostname; date
+
+export OMP_NUM_THREADS=16
+cd simdir
+swiftest symba param.in progress

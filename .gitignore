@@ -1,0 +1,12 @@
+*
+!.gitignore
+!LICENSE
+!README.md
+!rcac_utility_scripts/
+!rcac_utility_scripts/**/*.sub 
+!rcac_utility_scripts/**/*.sh
+!rcac_utility_scripts/**/*.yml
+!rcac_utility_scripts/mintonbuild/
+!rcac_utility_scripts/mintonbuild/mintonbuild
+!slurm_scripts/
+!slurm_scripts/**/*.sub

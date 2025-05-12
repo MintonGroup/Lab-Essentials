@@ -1,0 +1,22 @@
+#!/bin/zsh -l
+# ********************************************************************************************************************************
+# 
+# Author: David A. Minton
+# ********************************************************************************************************************************
+
+#SBATCH -A highmem
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=12:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --job-name=buildmintongroup
+#SBATCH -o %x.out
+#SBATCH -e %x.err
+#SBATCH --mail-user=daminton@purdue.edu
+#SBATCH --mail-type=ALL
+
+#Output some info to record where this was run and when
+pwd; hostname; date
+module purge
+
+./build_mintongroup_conda.sh

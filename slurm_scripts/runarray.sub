@@ -1,0 +1,32 @@
+#!/bin/zsh -l
+# ********************************************************************************************************************************
+# This is a SLURM script that will submit the 20 Swiftest/RMVS simulations as a job array to the Purdue RCAC Bell cluster system.
+# Before submitting this job to the cluster, be sure that you have compiled Swiftest in the correct branch (at the time of this
+# writing it is OOPrestructure) so that the linked executable can be accessed correctly.
+# 
+# Author: David A. Minton
+# ********************************************************************************************************************************
+
+#SBATCH --job-name=sim103clone
+#SBATCH --array=1-96
+#SBATCH --cpus-per-task=1
+
+#SBATCH -A daminton
+#SBATCH --time=14-00:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --no-requeue
+#SBATCH -o output/%x%a.out
+#SBATCH -e output/%x%a.err
+#SBATCH --mail-user=daminton@purdue.edu
+#SBATCH --mail-type=ALL
+
+#Output some info to record where this was run and when
+pwd; hostname; date
+
+clonenum=$(( $SLURM_ARRAY_TASK_ID ))
+clonedir=$(printf "lew3_sim103_GR_clone%03g" $clonenum)
+rundir="${SLURM_SUBMIT_DIR}/$clonedir"
+echo "rundir: ${rundir}"
+cd $rundir
+./swiftest_driver whm param.in progress
