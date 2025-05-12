@@ -10,3 +10,6 @@
 !rcac_utility_scripts/mintonbuild/mintonbuild
 !slurm_scripts/
 !slurm_scripts/**/*.sub
+!docs/
+!docs/images/
+!docs/images/**/*.png
